@@ -25,7 +25,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ./lib/index.js
+          upload_url: ${{ steps.release.outputs.upload_url }}
           asset_path: ./lib/index.js
           asset_name: test.zip
           asset_content_type: application/zip
