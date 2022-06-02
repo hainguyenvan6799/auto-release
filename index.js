@@ -84,9 +84,10 @@ async function main() {
         owner, 
         repo, 
         tag_name: newVersion, 
-        name: newVersion, 
+        name: newVersion,
         target_commitish: process.env.GITHUB_SHA,
-        body: changeLog
+        body: changeLog,
+        
       });
       // What output should we provide?
       // https://docs.github.com/en/rest/reference/repos#get-a-release

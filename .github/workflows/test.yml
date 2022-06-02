@@ -20,3 +20,13 @@ jobs:
       - name: Print output
         if: ${{ steps.release.outputs.released == 'true' }}
         run: echo Release HTML url ${{ steps.release.outputs.html_url }} ID ${{ steps.release.outputs.release_id }} Tag ${{ steps.release.outputs.release_tag }} Name ${{ steps.release.outputs.release_name }}
+      - name: Upload release asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.html_url }}
+          asset_path: ./lib/index.js
+          asset_name: test.zip
+          asset_content_type: application/zip
+        
